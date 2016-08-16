@@ -1,0 +1,313 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <display-name>UserInfoServlet</display-name>
+    <servlet-name>UserInfoServlet</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.UserInfoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>ContactsServlet</display-name>
+    <servlet-name>ContactsServlet</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.ContactsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>OAoauth</display-name>
+    <servlet-name>OAoauth</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.OAoauth</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>VerMap</display-name>
+    <servlet-name>VerMap</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerMap</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <display-name>VarImage</display-name>
+    <servlet-name>VarImage</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VarImage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VarImage</servlet-name>
+    <url-pattern>/image</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>Verequip</display-name>
+    <servlet-name>Verequip</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.Verequip</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Verequip</servlet-name>
+    <url-pattern>/equip</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <display-name>VerTabbar</display-name>
+    <servlet-name>VerTabbar</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerTabbar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerTabbar</servlet-name>
+    <url-pattern>/tabbar</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>VerMainapp</display-name>
+    <servlet-name>VerMainapp</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerMainapp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerMainapp</servlet-name>
+    <url-pattern>/main</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>VersignDetail</display-name>
+    <servlet-name>VersignDetail</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VersignDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VersignDetail</servlet-name>
+    <url-pattern>/detail</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>VerSign1</display-name>
+    <servlet-name>VerSign1</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerSign1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerSign1</servlet-name>
+    <url-pattern>/VerSign1</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>VerSearchMeet</display-name>
+    <servlet-name>VerSearchMeet</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerSearchMeet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerSearchMeet</servlet-name>
+    <url-pattern>/SearchMeet</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <display-name>VerExpense</display-name>
+    <servlet-name>VerExpense</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerExpense</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerExpense</servlet-name>
+    <url-pattern>/expense</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>VerSearch</display-name>
+    <servlet-name>VerSearch</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerSearch</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerSearch</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <display-name>VerTrip</display-name>
+    <servlet-name>VerTrip</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerTrip</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerTrip</servlet-name>
+    <url-pattern>/trip</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>VerWrite</display-name>
+    <servlet-name>VerWrite</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerWrite</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerWrite</servlet-name>
+    <url-pattern>/write</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>WaitAllow</display-name>
+    <servlet-name>WaitAllow</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.WaitAllow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WaitAllow</servlet-name>
+    <url-pattern>/waitallow</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>VerTest</display-name>
+    <servlet-name>VerTest</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerTest</servlet-name>
+    <url-pattern>/vertest</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>VerMeet</display-name>
+    <servlet-name>VerMeet</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerMeet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerMeet</servlet-name>
+    <url-pattern>/vermeet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <display-name>VerSign</display-name>
+    <servlet-name>VerSign</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerSign</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerSign</servlet-name>
+    <url-pattern>/versign</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>MyAllow</display-name>
+    <servlet-name>MyAllow</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.MyAllow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAllow</servlet-name>
+    <url-pattern>/myallow</url-pattern>
+  </servlet-mapping>
+  
+ 
+  
+  
+  <servlet-mapping>
+    <servlet-name>VerMap</servlet-name>
+    <url-pattern>/VerMap</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OAoauth</servlet-name>
+    <url-pattern>/OAoauth</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>IsvReceiveServlet</display-name>
+    <servlet-name>IsvReceiveServlet</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.IsvReceiveServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>EventChangeReceiveServlet</display-name>
+    <servlet-name>EventChangeReceiveServlet</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.EventChangeReceiveServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>VerifiAction</display-name>
+    <servlet-name>VerifiAction</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.VerifiAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserInfoServlet</servlet-name>
+    <url-pattern>/userinfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VerifiAction</servlet-name>
+    <url-pattern>/config</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ContactsServlet</servlet-name>
+    <url-pattern>/contactsinfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IsvReceiveServlet</servlet-name>
+    <url-pattern>/isvreceive</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EventChangeReceiveServlet</servlet-name>
+    <url-pattern>/eventreceive</url-pattern>
+  </servlet-mapping>
+  
+  
+ <!--    我的移动办公项目的配置！
+ 
+  -->
+  <servlet>
+		<servlet-name>EquipAction</servlet-name>
+		<servlet-class>com.njcit.servlet.EquipAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>EquipAction</servlet-name>
+		<url-pattern>*.eq</url-pattern>
+	</servlet-mapping>
+	
+	
+	 <servlet>
+		<servlet-name>SearchAction</servlet-name>
+		<servlet-class>com.njcit.servlet.SearchAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SearchAction</servlet-name>
+		<url-pattern>*.search</url-pattern>
+	</servlet-mapping>
+	
+	
+  <servlet>
+		<servlet-name>NoticeAction</servlet-name>
+		<servlet-class>com.njcit.servlet.NoticeAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>NoticeAction</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MeetAction</servlet-name>
+		<servlet-class>com.njcit.servlet.MeetAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ApprovalAction</servlet-name>
+		<url-pattern>*.a</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ApprovalAction</servlet-name>
+		<servlet-class>com.njcit.servlet.ApprovalAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>MeetAction</servlet-name>
+		<url-pattern>*.meet</url-pattern>
+	</servlet-mapping>
+  <servlet>
+		<servlet-name>MapAction</servlet-name>
+		<servlet-class>com.njcit.servlet.MapAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>MapAction</servlet-name>
+		<url-pattern>*.q</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SignAction</servlet-name>
+		<servlet-class>com.njcit.servlet.SignAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SignAction</servlet-name>
+		<url-pattern>*.s</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>TestAction</servlet-name>
+		<servlet-class>com.njcit.servlet.TestAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestAction</servlet-name>
+		<url-pattern>/test</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jsapi.html</title>
+    <meta name="content-type" content="text/html; charset=UTF8">
+    <script type="text/javascript" src="js/jquery-1.12.2.js"></script>   
+    <script type="text/javascript" src="http://g.alicdn.com/ilw/ding/0.8.4/scripts/dingtalk.js">  
+    </script>
+
+  </head>
+  
+  <body>
+ 
+ 
+ <script>
+ //设置导航栏右侧
+dd.biz.navigation.setRight({
+    show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
+    control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
+    text: "发送",//控制显示文本，空字符串表示显示默认文本
+    onSuccess : function(result) {
+        //如果control为true，则onSuccess将在发生按钮点击事件被回调
+       
+        alert("发送成功！");
+    },
+    onFail : function(err) {
+    alert("发送失败！");
+    }
+});  
+ </script>
+
+<script>
+//进行权限配置
+var permis = "lj";
+var _accessToken = null;
+var _nonceStr = null;
+var _timeStamp = null;
+var _signature = null;
+//获取用户信息
+        var isAdmin =null;
+        var mobile =null;
+        var name =null;
+        var userid =null;
+
+$(document).ready(function(){ 
+        alert("开始权限配置！");
+	      $.ajax({
+				type: "post",
+					url: "http://192.168.1.102:8080/demo/config",
+					contentType: "application/x-www-form-urlencoded; charset=utf-8",
+					data: {	
+					permis:permis,
+					},
+					async: true,
+					dataType: "json",
+					success: function(msg) {
+						//alert(msg);
+					for (var i = 0; i < msg.length; i++) {
+						//alert(msg[i].accessToken);
+						//alert(msg[i].nonceStr);
+						//alert(msg[i].timeStamp);
+						//alert(msg[i].signature);
+						 _accessToken = msg[i].accessToken;
+						 _nonceStr = msg[i].nonceStr;
+						 _timeStamp = msg[i].timeStamp;
+						 _signature = msg[i].signature;
+	   dd.config({
+               agentId: "15128303",
+               corpId: "ding601de91bf9a0ee1c",
+               timeStamp: _timeStamp,
+               nonceStr: _nonceStr,
+               signature: _signature,
+          jsApiList: ["runtime.info",
+          "biz.contact.choose",
+          "device.geolocation.get",
+          "biz.ding.post",
+          "biz.util.uploadImage",
+          "biz.map.search",
+          "biz.contact.complexChoose"]
+         });
+
+         dd.ready(function() {
+              alert("权限配置成功！");
+   
+    //获取code
+ dd.runtime.permission.requestAuthCode({
+    corpId: "ding601de91bf9a0ee1c",
+    onSuccess: function(result) {
+        alert(result.code);
+        var code = result.code;
+        var corpId="ding601de91bf9a0ee1c";
+        
+			    $.ajax({
+				    type: "get",
+					url: "http://192.168.1.102:8080/demo/userinfo?code="+encodeURIComponent(code)+"&corpid="+encodeURIComponent(corpId),
+					//contentType: "application/x-www-form-urlencoded; charset=utf-8",
+					async: true,
+					dataType: "json",
+					success: function(msg) {
+						//alert(msg);
+						alert(msg.isAdmin);
+						alert(msg.name);
+						alert(msg.mobile);
+						alert(msg.userid);
+
+						  //注释
+						  isAdmin = msg.isAdmin;
+						  name = msg.name;
+						  mobile =msg.mobile;
+						  userid = msg.userid;
+						
+						
+						},
+						error:function() {
+		                   alert("获取失败！");
+			             }
+			    });
+           },
+   
+    onFail : function(err) {
+    alert("获取免登授权码失败");
+     for( i in err){
+       alert(i);
+    }
+    }
+  
+});
+//结束
+              //设置标题
+         dd.biz.navigation.setTitle({
+                    title : "权限配置",//控制标题文本，空字符串表示显示默认文本
+                    onSuccess : function(result) {
+                  // for(i in result){
+                  // alert(i);
+                // }
+                },
+    onFail : function(err) {
+     for(i in err){
+       alert(i);
+       }
+       }
+});
+//标题栏添加问好
+dd.biz.navigation.setIcon({
+    showIcon : true,//是否显示icon
+    iconIndex : 1,//显示的iconIndex,如图
+    onSuccess : function(result) {
+         alert("你点击了这个事件");
+        /*结构
+        {
+        }*/
+        //点击icon之后将会回调这个函数
+    },
+    onFail : function(err) {
+    //jsapi调用失败将会回调此函数
+    alert("失败");
+    }
+});
+//设置导航栏右侧
+/*
+dd.biz.navigation.setRight({
+    show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
+    control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
+    text: "发送",//控制显示文本，空字符串表示显示默认文本
+    onSuccess : function(result) {
+        //如果control为true，则onSuccess将在发生按钮点击事件被回调
+       
+        alert("发送成功！");
+    },
+    onFail : function(err) {
+    alert("发送失败！");
+    }
+});  */
+
+
+
+       });
+
+      dd.error(function(error) {
+            alert("权限配置失败");//这里走不到
+       // alert(error);
+       // alert(error.errCode);
+        alert(error.message);    
+   });
+  }	
+	},
+	error:function() {
+		alert("获取失败！");
+			}
+	});
+	});
+      //自动配置权限
+
+
+
+
+
+function image(){
+  dd.biz.util.uploadImage({
+    multiple: false, //是否多选，默认false
+    max: 3, //最多可选个数
+    onSuccess : function(result) {
+    alert("进入函数");
+    alert(result);
+   // for( i in result){
+       //  alert(i);
+  //}
+        //onSuccess将在图片上传成功之后调用
+        /*
+        [
+          'http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png'
+        ]
+        */
+    },
+    onFail : function(err) {
+    alert(err.errorCode);
+    alert(err.errorMessage);}
+});
+  }
+function detu(){
+dd.device.geolocation.get({
+    targetAccuracy : 200,
+    coordinate : 0,
+    withReGeocode : true,
+    onSuccess : function(result) {
+   //for( i in result){
+  //alert(i);
+ // }
+    alert("精度:"+result.longitude+"纬度:"+result.latitude+"地址:"+ result.address);
+     alert("测试信息:"+json.stringify(result));
+    },
+    onFail : function(err) {
+    alert(err.errorCode);
+    alert(err.errorMessage);
+    
+    for( i in err){
+    alert(i);
+    }
+}
+});
+}
+
+function ding(){
+alert("进入函数");
+   dd.biz.ding.post({
+    users : [""],//用户列表，工号
+    corpId: "ding601de91bf9a0ee1c", //企业id
+    type: 1, //钉类型 1：image  2：link
+    alertType: 2,
+    alertDate: {"format":"yyyy-MM-dd HH:mm","value":"2016-04-04 16:40"},
+    attachment: {
+        images: [''],
+    }, //附件信息
+    text: '', //消息
+    onSuccess : function() {
+    alert("ok!");
+    },
+    onFail : function() {
+    alert("你走开");
+    }
+});
+}
+
+ function search() {
+dd.biz.map.search({
+    latitude: "", // 纬度
+    longitude: "", // 经度
+    scope: 500, // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
+
+    onSuccess: function (poi) {
+       alert("街道名称:"+poi.snippet+"poi名称:"+poi.title+"poi与设备的位置距离:"+poi.distance);
+       // var address = "街道名称:"+poi.snippet+"poi名称:"+poi.title+"poi与设备的位置距离:"+poi.distance;
+       var address = poi.title;
+				//发送AJAX请求并且处理
+				alert("开始发送请求1");
+				var request = new XMLHttpRequest();
+				alert("开始发送请求");
+				request.open("GET","http://192.168.1.102:8080/demo/sign.s?address="+encodeURIComponent(address),"true");
+			    request.send();
+			    alert("open");
+			    request.onreadystatechange=function(){
+			    	 if(request.readyState === 4){
+			    	 	 if(request.status === 200){	
+			    	 	 //alert("成功");	
+			    	 	 	document.getElementById("params").innerHTML=address;
+			    	 	 	alert("wokao");
+			    	 	 	//window.open("Test.html");
+			    	 	 	//document.getElementById("searchResult").innerHTML = request.responseText;
+			    	 	 	
+			    	 	 }else{
+			    	 	 	alert("定位失败");			    	 	 
+			    	 } 
+			    	 }
+			    	 };
+    },
+    onFail: function (err) {
+    }
+});
+
+}
+function choose(){
+dd.biz.contact.complexChoose({
+  startWithDepartmentId: -1, //-1表示从自己所在部门开始, 0表示从企业最上层开始，其他数字表示从该部门开始
+  selectedUsers: ["03103350613825","0323451112315"], //预选用户
+  corpId: "ding601de91bf9a0ee1c", //企业id
+  onSuccess: function(data) {
+   alert("测试信息:"+json.stringify(data));
+  //onSuccess将在选人，选部门结束，点击确定按钮的时候被回调
+  /* data结构
+    {
+      "users": [
+      {
+        "name": "张三", //姓名
+        "avatar": "htp://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+        "emplId": "0573", //userid:
+      },
+      ...
+      ],
+      "department": [
+      {
+        "id": 2,
+        "name": "来往事业部",
+      },
+      ...
+      ]
+    }
+  */
+  },
+  onFail : function(err) {
+   alert(err.errorCode);
+    alert(err.errorMessage);
+  },
+});
+}
+function preview(){
+dd.biz.util.previewImage({
+    urls: [""],//图片地址列表
+    current: "",//当前显示的图片链接
+    onSuccess : function(result) {
+        /**/
+    },
+    onFail : function() {}
+});
+}
+function date(){
+dd.biz.util.datetimepicker({
+    format: 'yyyy-MM-dd HH:mm',
+    value: '2015-04-17 08:00', //默认显示
+    onSuccess : function(result) {
+      alert(result.value);
+      try{   
+       window.location.href="Test.html";
+       window.open("Test.html");
+       }catch (e) {
+		alert("不执行");
+	}
+       alert("叫你不执行");
+    },
+    onFail : function() {}
+});
+}
+</script>
+
+    <p id="searchResult"></p>
+     <button id="ditu"   onclick="detu()" style="width: 924px; height: 79px">地图</button><br>
+     <button id="tishi"  onclick="ding()" style="width: 925px; height: 81px">盯一下</button><br>
+     <button id="chat"   onclick="search()" style="width: 926px; height: 87px">地图搜索</button><br>
+     <button id="meet"   onclick="image()" style="width: 926px; height: 84px">上传图片</button><br>
+     <button id="choose" onclick="choose()" style="width: 926px; height: 86px">选人选部门</button><br>
+      <button id="preview" onclick="preview()" style="width: 926px; height: 93px">拍照传照片</button><br>
+      <button id="data" onclick="date()" style="width: 926px; height: 95px">时间选择</button><br>
+      <button id="Obtain" onclick="Obtain()" style="width: 926px; height: 95px">获取免登码</button><br>
+     <div id="appear"></div>
+     <div id="params"></div>
+    
+  </body>
+</html>
